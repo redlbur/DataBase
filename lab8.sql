@@ -13,4 +13,5 @@ SELECT * FROM employees WHERE substring(name from 1 for 4) = ‘abcd’;
 CREATE INDEX emp_substring_index ON employees USING hash (substring(name from 1 to 4));
 
 SELECT * FROM employees e JOIN departments d ON d.department_id = e.department_id WHERE d.budget > value2 AND e.salary < value2;
-CREATE JOIN INDEX emp_department_index FOR employees e JOIN department d ON d.department_id = e.department.id;
+CREATE INDEX depart_index ON employees (department_id, salary);
+CREATE INDEX budget_index ON departments (department_id, budget);                                                                 
